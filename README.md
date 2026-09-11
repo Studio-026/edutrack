@@ -226,6 +226,10 @@ don't need to write new Issues for this project — just:
 3. Write `Closes #N` (using your Issue's number) in your Pull Request,
    like step 6 above. When your PR merges, the Issue closes by itself.
 
+Every Issue also has a **Bonus** section — an optional stretch goal for
+if you finish your core CRUD early. None of them are required, and none
+should be started before your track's actual required work is done.
+
 ---
 
 ## Stuck?

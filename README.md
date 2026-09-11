@@ -96,6 +96,26 @@ app.include_router(enrollments.router)
 That's it. Same skills, just split across files so five people aren't
 editing the same file at once.
 
+## Login — how much auth to actually build
+
+`POST /login` checks a username and password against the `users` list and
+returns the user, or a 401 if they don't match. That part's simple.
+
+To make *other* endpoints require login, add one thing: when `/login`
+succeeds, generate a random token (`uuid.uuid4()`), store it in a
+dictionary (`sessions = {token: user_id}`), and return it. Any endpoint
+that should require login takes a `current_user` parameter built with
+FastAPI's `Depends(...)`, which looks the token up in that dictionary. No
+token, or a token that isn't in the dictionary → 401, automatically,
+before your endpoint's code even runs.
+
+**What this is not:** there's no password hashing, no JWT, no real
+security here — a token is just a random string in a plain dictionary
+with no expiry. That's intentional, matches everything else in this
+project, and is not something to reuse anywhere real. Actual production
+auth is a topic for later, during onboarding — don't spend time trying
+to build more than this.
+
 ---
 
 ## Git Cheatsheet — follow these steps for every task

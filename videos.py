@@ -39,11 +39,6 @@ def require_teacher(current_user: User = Depends(get_current_user)) -> User:
     return current_user
 
 
-@router.get("/videos", response_model=list[Video])
-def get_all_videos(current_user: User = Depends(get_current_user)):
-    return videos
-
-
 @router.get("/videos/{video_id}", response_model=Video)
 def get_video(video_id: int, current_user: User = Depends(get_current_user)):
     for video in videos:

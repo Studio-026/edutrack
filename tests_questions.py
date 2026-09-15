@@ -9,8 +9,8 @@ submissions = []
 class Question(BaseModel):
     id: int
     text: str
-    options: list[int]
-    correct_answer: int
+    options: list[str]
+    correct_index: int
 
 class Test(BaseModel):
     id: int

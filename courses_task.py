@@ -46,7 +46,6 @@ def add_course(course: Course, current_user = Depends(login)):
     return course
 
 
-# 4. Update
 @router.put("/courses/{course_id}")
 def edit_course(course_id: int, updated_course: Course, current_user = (login)):
     for index, existing_course in enumerate(courses):

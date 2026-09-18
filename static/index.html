@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EduTrack</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>EduTrack</h1>
+    <div id="who" class="who"></div>
+  </header>
+
+  <main id="auth-screen" class="panel">
+    <div class="auth-forms">
+      <section class="card">
+        <h2>Log in</h2>
+        <form id="login-form">
+          <label>Username <input name="username" required></label>
+          <label>Password <input name="password" type="password" required></label>
+          <button type="submit">Log in</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Register</h2>
+        <form id="register-form">
+          <label>Name <input name="name" required></label>
+          <label>Username <input name="username" required></label>
+          <label>Password <input name="password" type="password" required></label>
+          <label>Role
+            <select name="role">
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+            </select>
+          </label>
+          <button type="submit">Create account</button>
+        </form>
+      </section>
+    </div>
+    <p id="auth-message" class="message"></p>
+  </main>
+
+  <main id="app-screen" class="panel" hidden>
+    <section class="card">
+      <h2>New course</h2>
+      <form id="course-form" class="inline-form">
+        <input name="title" placeholder="Title" required>
+        <input name="description" placeholder="Description" required>
+        <button type="submit">Create course</button>
+      </form>
+      <p class="hint">Only teacher accounts can actually create a course — the server enforces that, not this form.</p>
+    </section>
+
+    <section class="card">
+      <div class="row-between">
+        <h2>Courses</h2>
+        <form id="search-form" class="inline-form">
+          <input name="search_word" placeholder="Search courses...">
+          <button type="submit">Search</button>
+          <button type="button" id="clear-search">Clear</button>
+        </form>
+      </div>
+      <div id="courses-list"></div>
+    </section>
+
+    <p id="app-message" class="message"></p>
+  </main>
+
+  <template id="course-template">
+    <article class="card course-card">
+      <div class="row-between">
+        <h3 class="course-title"></h3>
+        <span class="course-id"></span>
+      </div>
+      <p class="course-description"></p>
+
+      <details>
+        <summary>Videos</summary>
+        <ul class="video-list"></ul>
+        <form class="add-video-form inline-form">
+          <input name="title" placeholder="Video title" required>
+          <input name="url" placeholder="Video URL" required>
+          <input name="duration_minutes" type="number" min="1" placeholder="Minutes" required>
+          <button type="submit">Add video</button>
+        </form>
+      </details>
+
+      <details>
+        <summary>Tests</summary>
+        <ul class="test-list"></ul>
+        <form class="add-test-form">
+          <input name="title" placeholder="Test title" required>
+          <div class="questions-editor"></div>
+          <button type="button" class="add-question">+ Add question</button>
+          <button type="submit">Create test</button>
+        </form>
+      </details>
+    </article>
+  </template>
+
+  <template id="question-row-template">
+    <div class="question-row">
+      <input class="q-text" placeholder="Question text" required>
+      <input class="q-opt" placeholder="Option A" required>
+      <input class="q-opt" placeholder="Option B" required>
+      <input class="q-opt" placeholder="Option C">
+      <input class="q-opt" placeholder="Option D">
+      <label>Correct option # (0-based) <input class="q-correct" type="number" min="0" value="0" required></label>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

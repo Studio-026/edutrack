@@ -2,7 +2,7 @@ Subject: Onboarding & Task Distribution: EduTrack Backend Development
 
 Team,
 
-We're kicking off development for EduTrack (repository: https://github.com/Huna-Studio/edutrack). This covers the architecture, the workflow, and the six tracks available.
+We're kicking off development for EduTrack (repository: https://github.com/Studio-026/edutrack). This covers the architecture, the workflow, and the six tracks available.
 
 **Architecture & Stack**
 
